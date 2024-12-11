@@ -184,8 +184,16 @@ const posts = await getCollection("posts");
         </ul>
       </div>
     </article>
-    <p class="m-8 text-slate-500 text-lg">© 2024 Campana Municipalidad</p>
+    <p class="m-8 text-palette7 text-lg" id="copyright">
+      © 2024 Campana Municipalidad
+    </p>
   </footer>
+
+  <script>
+    const copyright = document.getElementById("copyright") as HTMLElement;
+    const newYear = new Date();
+    copyright.textContent = `© ${newYear.getFullYear()} Campana Municipalidad`;
+  </script>
   <style>
     .main-container {
       position: relative;

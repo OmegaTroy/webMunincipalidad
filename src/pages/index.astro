@@ -9,6 +9,7 @@ import CardPost from "@/components/CardPost.astro";
 
 import { subLinks } from "@/utils/subLinks";
 import { getCollection } from "astro:content";
+import { AlertaCampana } from "@/components/AlertaCampana";
 const posts = await getCollection("posts");
 ---
 
@@ -25,21 +26,21 @@ const posts = await getCollection("posts");
       </p>
       <div class="flex w-full justify-center items-center gap-8 text-xl mt-14">
         <a
-          href="/"
-          class="animate-zoom-in scalete p-3 bg-[rgba(6,4,7,0.80)] rounded-full text-palette7 border-2 border-palette8"
+          href="https://www.facebook.com/municipalidaddecampana"
+          class="animate-zoom-in p-3 bg-[rgba(6,4,7,0.80)] rounded-full text-palette7 border-2 border-palette8"
         >
           <FacebookIcon />
         </a>
         <a
-          href="/"
-          class="animate-zoom-in scalete p-3 bg-[rgba(6,4,7,0.80)]
+          href="https://www.instagram.com/campanagov/?hl=es"
+          class="animate-zoom-in p-3 bg-[rgba(6,4,7,0.80)]
      rounded-full text-palette7 border-2 border-palette8"
         >
           <InstagramenIcon />
         </a>
         <a
-          href="/"
-          class="animate-zoom-in scalete p-3 rounded-full bg-[rgba(6,4,7,0.80)] text-palette7 border-2 border-palette8"
+          href="https://x.com/campanagov"
+          class="animate-zoom-in p-3 rounded-full bg-[rgba(6,4,7,0.80)] text-palette7 border-2 border-palette8"
         >
           <TwitterIcon />
         </a>
@@ -66,38 +67,11 @@ const posts = await getCollection("posts");
   <section class="w-full h-full mt-14 p-5">
     <h3 class="text-3xl font-bold text-palette8 text-center mb-7">Noticias</h3>
     <ul class="flex flex-col w-full items-center gap-10">
-      {posts.map((post) => <CardPost posts={post} />)}
+      {posts.map((post: any) => <CardPost posts={post} />)}
     </ul>
   </section>
-  <article
-    class="w-full h-full mt-14 p-5 flex justify-center flex-col items-center"
-  >
-    <h3 class="text-3xl font-bold text-palette8 text-center mb-7">
-      descarga Alerta Campana! para iOS y Android
-    </h3>
-    <div
-      class="relative app-card w-[250px] h-[250px] rounded-xl border-2 shadow-lg shadow-[rgba(255,255,255,0.1)] border-palette8"
-    >
-      <div class="app-info text-base font-semibold">
-        <p class="text-palette7 text-center">
-          IMPORTANTE! 👇 Ante cualquier hecho sospechoso, te pedimos que des
-          aviso inmediato a través de la app Alerta Campana, disponible para su
-          descarga gratuita en PlayStore y AppStore.
-        </p>
-        <div class="flex gap-4 mt-5">
-          <a
-            href="https://play.google.com/store/apps/details?id=com.campanaAlerta&hl=es_AR"
-            target="_blank">Play Store</a
-          >
-          <a
-            href="https://apps.apple.com/ar/app/campana-alerta/id1281988298"
-            target="_blank"
-          >
-            App Store
-          </a>
-        </div>
-      </div>
-    </div>
+  <article class="fixed bottom-4 right-10 z-50">
+    <AlertaCampana client:load />
   </article>
   <section class="w-full h-full mt-14 p-5">
     <h2 class="text-3xl font-bold text-palette8 text-center mb-7">
@@ -204,13 +178,6 @@ const posts = await getCollection("posts");
       text-shadow: 0px 3px 100px black;
     }
 
-    .scalete {
-      transition: transform 0.5s;
-    }
-    .scalete:hover {
-      transform: scale(1.3);
-      transition: transform 0.5s;
-    }
     .app-card {
       background: url("/alertaCampana.jpg") center;
       background-size: cover;
